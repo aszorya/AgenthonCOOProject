@@ -2,6 +2,8 @@
 
 **COOPilot** adalah asisten operasional berbasis AI untuk usaha kecil (toko kopi, warung, bakery, dll.). Sistem ini membantu onboarding bisnis, menemukan supplier di sekitar lokasi, mengelola stok, memproses penjualan dari kasir, dan menyiapkan pembayaran vendor — terutama lewat **Telegram**, dengan dukungan **dashboard kasir** (Streamlit) dan **REST API** (FastAPI).
 
+Bisa diakses di https://t.me/COO_MissingValues_bot
+
 > **Penting:** Semua perintah di bawah dijalankan dari folder `coopilot/` (bukan folder induk `AgenthonCOOProject/`).
 
 ---
