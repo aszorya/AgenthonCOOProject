@@ -9,19 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 MOCK_PROFILE = {
-    "legal_entity_type": "CV",
-    "legal_name": "CV Kopi Senja Nusantara",
     "business_name": "Kopi Senja",
-    "business_type": "coffee shop online",
-    "business_address": "Jl. Melati No. 12, Kemang",
-    "city": "Jakarta Selatan",
-    "npwp": "12.345.678.9-000",
-    "owner_name": "Budi Santoso",
+    "business_type": "toko kopi",
     "budget": "2000000",
-    "target_goal": "Tingkatkan penjualan",
-    "operational_preference": "supplier terdekat",
     "latitude": -6.2615,
     "longitude": 106.8106,
+    "location_label": "Jakarta Selatan",
 }
 
 MOCK_SUPPLIER = {

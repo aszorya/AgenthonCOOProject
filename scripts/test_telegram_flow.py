@@ -9,19 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 DEMO_PROFILE = {
-    "legal_entity_type": "CV",
-    "legal_name": "CV Kopi Senja",
     "business_name": "Kopi Senja",
-    "business_type": "coffee shop online",
-    "business_address": "Jl. Test 1",
-    "city": "Jakarta",
+    "business_type": "toko kopi",
     "budget": "2000000",
-    "target_goal": "Tingkatkan penjualan 30% dalam 1 bulan",
-    "operational_preference": "Prioritaskan supplier hemat biaya",
-    "owner_name": "Demo Owner",
     "chat_id": "test_user",
     "latitude": -6.2615,
     "longitude": 106.8106,
+    "location_label": "Jakarta demo",
 }
 
 DEMO_SUPPLIER = {

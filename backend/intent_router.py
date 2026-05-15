@@ -10,6 +10,8 @@ class UserIntent(str, Enum):
     VENDOR_PAYMENT = "vendor_payment"
     PLANNING = "planning"
     MARKETING = "marketing"
+    SUPPLY_CHAIN = "supply_chain"
+    AUTO_REORDER = "auto_reorder"
     HELP = "help"
 
 
@@ -25,12 +27,18 @@ _PLANNING = re.compile(
     r"\b(rencana|strategi|tingkatkan|tumbuh|goal|target|operasional)\b",
     re.I,
 )
+_SUPPLY = re.compile(r"\b(mulai|setup.?vendor|rantai.?pasok|discovery)\b", re.I)
+_REORDER = re.compile(r"\b(reorder|stok.?habis|restock|isi.?ulang)\b", re.I)
 
 
 def detect_intent(text: str) -> UserIntent:
     t = (text or "").strip()
     if not t:
         return UserIntent.HELP
+    if _REORDER.search(t):
+        return UserIntent.AUTO_REORDER
+    if _SUPPLY.search(t):
+        return UserIntent.SUPPLY_CHAIN
     if _PAYMENT.search(t):
         return UserIntent.VENDOR_PAYMENT
     if _MARKETING.search(t):

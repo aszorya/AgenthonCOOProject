@@ -18,7 +18,7 @@ class MemoryAgent(BaseAgent):
             return AgentResult(
                 self.name,
                 "blocked",
-                "Tidak ada supplier terdaftar. Daftar dulu via /tambah_supplier",
+                "Belum ada vendor. Jalankan /mulai untuk discovery otomatis",
                 {},
             )
 

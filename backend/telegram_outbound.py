@@ -71,3 +71,51 @@ def format_invoice_message(
         lines.append(f"Link pembayaran: {payment_url}")
     lines.append("\nMohon konfirmasi penerimaan. — COOPilot AI")
     return "\n".join(lines)
+
+
+def format_reorder_notification(
+    *,
+    business_name: str,
+    reorder_items: list[dict[str, Any]],
+    reorder_orders: list[dict[str, Any]] | None = None,
+    vendor_name: str = "",
+    payment_url: str = "",
+    payment_amount: int = 0,
+    trigger_source: str = "",
+    last_sale: dict[str, Any] | None = None,
+) -> str:
+    """Pesan notifikasi reorder ke pemilik bisnis (Telegram)."""
+    lines = [
+        "🔔 *Reorder otomatis terpicu*",
+        f"Bisnis: {business_name}",
+    ]
+    if trigger_source:
+        lines.append(f"Sumber: {trigger_source}")
+    if last_sale:
+        lines.append(
+            f"Picu penjualan: {last_sale.get('qty')}x {last_sale.get('product')} "
+            f"(kasir: {last_sale.get('cashier', '-')})"
+        )
+    lines.append("\n*Bahan stok rendah:*")
+    for row in reorder_items[:6]:
+        qty = row.get("qty", "?")
+        min_q = row.get("min_qty", "?")
+        unit = row.get("unit", "unit")
+        lines.append(f"• {row.get('item', '?')}: sisa {qty} {unit} (ambang {min_q})")
+
+    if reorder_orders:
+        lines.append("\n*Rencana pesan:*")
+        for o in reorder_orders[:4]:
+            lines.append(f"• {o.get('item')} → vendor {o.get('vendor') or '-'}")
+
+    if vendor_name:
+        lines.append(f"\n*Vendor dipilih:* {vendor_name}")
+    if payment_amount:
+        lines.append(f"*Nominal:* Rp {payment_amount:,}")
+    if payment_url:
+        lines.append(f"*Link DOKU:* {payment_url}")
+    elif vendor_name:
+        lines.append("\n_Link pembayaran belum tersedia — cek /bayar di bot._")
+
+    lines.append("\n— COOPilot AI")
+    return "\n".join(lines)

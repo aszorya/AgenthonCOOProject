@@ -24,7 +24,7 @@ class PaymentAgent(BaseAgent):
             return AgentResult(
                 self.name,
                 "blocked",
-                "Tidak ada supplier valid. Gunakan /tambah_supplier lalu /bayar <nama>",
+                "Tidak ada vendor valid. Jalankan /mulai lalu /bayar <nama>",
                 {},
             )
 

@@ -42,5 +42,18 @@ def format_workflow_summary(run: WorkflowRun) -> str:
         lines += ["", "_Telegram invoice: belum terkirim (vendor perlu /start bot)_"]
     if ctx.get("memory_note"):
         lines += ["", f"_{escape_md(str(ctx['memory_note']))}_"]
+    if ctx.get("supply_needs"):
+        names = ", ".join(
+            str(s.get("name", s)) if isinstance(s, dict) else str(s)
+            for s in ctx["supply_needs"][:8]
+        )
+        lines += ["", f"*Supply:* {escape_md(names)}"]
+    if ctx.get("discovered_vendors"):
+        vnames = ", ".join(v.get("name", "") for v in ctx["discovered_vendors"][:6])
+        lines += ["", f"*Vendor:* {escape_md(vnames)}"]
+    if ctx.get("outreach_log"):
+        lines += ["", f"*Outreach:* {len(ctx['outreach_log'])} vendor dihubungi"]
+    if ctx.get("telegram_reorder_notified"):
+        lines += ["", "*Notifikasi reorder:* terkirim ke Telegram ✅"]
 
     return "\n".join(lines)

@@ -156,6 +156,4 @@ def format_recommendations(items: list[dict[str, Any]]) -> str:
             f"   Jarak: {s.get('distance_label', '?')}"
             + (f"\n   Tel: `{s['phone']}`" if s.get("phone") else "")
         )
-    lines.append(
-        "\nSimpan: /simpan_vendor <nomor>\nDaftar manual: /tambah_supplier")
     return "\n".join(lines)

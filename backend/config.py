@@ -12,6 +12,9 @@ _ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=_ENV_PATH)
 
 
+# Bahan baku inti yang dicari vendornya (paling sering dipakai)
+MAX_CORE_SUPPLIES = 4
+
 class ModelRole(str, Enum):
     ORCHESTRATOR = "orchestrator"
     SUB_AGENT = "sub_agent"
