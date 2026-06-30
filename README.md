@@ -308,6 +308,4 @@ python scripts/validate_foundation.py
 
 ---
 
-## Lisensi
 
-Proyek internal / hackathon — tambahkan lisensi sesuai kebijakan tim Anda.
